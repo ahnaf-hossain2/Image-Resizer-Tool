@@ -57,3 +57,37 @@ Resize based on height:
 resize_image.py
 * Uses Pillow's Image.resize() method with LANCZOS resampling for high-quality output.
 * Accepts exact width and height as arguments.
+
+resize_with_aspect_ratio.py
+* Automatically calculates missing dimensions to preserve the original aspect ratio.
+* Flexible: Specify either width or height (or both for exact resizing).
+
+Command-Line Arguments
+For resize_image.py:
+Argument	Description
+input_path	Path to the input image
+output_path	Path to save the resized image
+width	Target width in pixels (integer)
+height	Target height in pixels (integer)
+For resize_with_aspect_ratio.py:
+Argument	Description
+input_path	Path to the input image
+output_path	Path to save the resized image
+--width	Target width (optional)
+--height	Target height (optional)
+
+## Example Output:
+
+Original Image(1920x1080)
+Resized to 800x600
+Resized with Aspect Ratio(width=800)
+
+Contributing
+Fork the repository.
+Create a feature branch (git checkout -b feature/your-feature).
+Commit changes (git commit -m 'Add some feature').
+Push to the branch (git push origin feature/your-feature).
+Open a Pull Request.
+
+License
+This project is licensed under the MIT License. See LICENSE for details.
