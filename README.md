@@ -25,16 +25,35 @@ A Python script to resize images to specific dimensions or while maintaining the
 
 ## Usage
 
-1. resize_image.py (Exact Dimensions)
 First open the cmd. Then goto your file location(for example):
-
    ```bash
    "C:\Users\User\Desktop\GitHub\Image resizer python"
 
-
-   ```bash
-
-
+1. resize_image.py (Exact Dimensions)
 Resize an image to specific dimensions (width and height).
-   ```bash
-   python resize_image.py <input_path> <output_path> <width> <height>
+  ```bash
+  python resize_image.py <input_path> <output_path> <width> <height>
+
+Example:
+    ```bash
+    python resize_with_aspect_ratio.py input.jpg output.jpg --width 800
+
+2. resize_with_aspect_ratio.py (Maintain Aspect Ratio)
+Resize an image while preserving the aspect ratio. Specify either --width or --height.
+
+    ```bash
+    python resize_with_aspect_ratio.py <input_path> <output_path> --width <target_width> --height <target_height>
+Examples:
+Resize based on width:
+    ```bash
+    python resize_with_aspect_ratio.py input.jpg output.jpg --width 800
+
+Resize based on height:
+    ```bash
+    python resize_with_aspect_ratio.py input.jpg output.jpg --height 600
+
+## How It Works
+
+resize_image.py
+* Uses Pillow's Image.resize() method with LANCZOS resampling for high-quality output.
+* Accepts exact width and height as arguments.
