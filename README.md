@@ -1,93 +1,121 @@
-# Image-Resizer-Tool
-This tool will resize your image while maintaining its aspect ratio. But also you can do it without maintaining the aspect ratio. This is
-A Python script to resize images to specific dimensions or while maintaining the original aspect ratio. Built using the Pillow library.
+# 🖼️ Image-Resizer-Tool
 
-## Features
+A simple yet powerful Python utility for resizing images with flexibility. Resize images to exact dimensions or maintain aspect ratio using the high-quality Pillow library.
 
-1. **Resize to Exact Dimensions**: Resize an image to exact width and height (may distort the image if the aspect ratio differs).
-2. **Maintain Aspect Ratio**: Resize an image by specifying either width or height, and automatically calculate the other dimension to preserve the aspect ratio.
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.x](https://img.shields.io/badge/python-3.x-green.svg)](https://www.python.org/)
 
-## Requirements
+## ✨ Features
+
+- **Exact Dimension Resizing**: Set precise width and height values
+- **Aspect Ratio Preservation**: Specify only width or height to maintain proportions
+- **High-Quality Output**: Uses Lanczos resampling for superior results
+- **Simple Command-Line Interface**: Easy to use with straightforward commands
+
+## 🔧 Requirements
 
 - Python 3.x
 - Pillow library
 
-## Installation
+## 📥 Installation
 
 1. **Clone the repository**:
    ```bash
-   git clone "https://github.com/ahnaf-hossain2/Image-Resizer-Tool.git"
-   cd image-resizer-python
+   git clone https://github.com/ahnaf-hossain2/Image-Resizer-Tool.git
+   cd Image-Resizer-Tool
+   ```
 
-2. Install Pillow:
+2. **Install Pillow**:
    ```bash
    pip install Pillow
+   ```
 
-## Usage
+## 📝 Usage
 
-First open the cmd. Then goto your file location(for example):
-   ```bash
-   "C:\Users\User\Desktop\GitHub\Image resizer python"
+Navigate to the project directory:
+```bash
+cd path/to/Image-Resizer-Tool
+```
 
-1. resize_image.py (Exact Dimensions)
-Resize an image to specific dimensions (width and height).
+### Method 1: Resize to Exact Dimensions
+```bash
+python resize_image.py <input_path> <output_path> <width> <height>
+```
+
+**Example**:
+```bash
+python resize_image.py input.jpg resized_output.jpg 800 600
+```
+
+### Method 2: Resize with Aspect Ratio Preservation
+```bash
+python resize_with_aspect_ratio.py <input_path> <output_path> [--width <width>] [--height <height>]
+```
+
+**Examples**:
+- Resize based on width (height calculated automatically):
   ```bash
-  python resize_image.py <input_path> <output_path> <width> <height>
+  python resize_with_aspect_ratio.py input.jpg resized_output.jpg --width 800
+  ```
 
-Example:
-    ```bash
-    python resize_with_aspect_ratio.py input.jpg output.jpg --width 800
+- Resize based on height (width calculated automatically):
+  ```bash
+  python resize_with_aspect_ratio.py input.jpg resized_output.jpg --height 600
+  ```
 
-2. resize_with_aspect_ratio.py (Maintain Aspect Ratio)
-Resize an image while preserving the aspect ratio. Specify either --width or --height.
+## 🔍 How It Works
 
-    ```bash
-    python resize_with_aspect_ratio.py <input_path> <output_path> --width <target_width> --height <target_height>
-Examples:
-Resize based on width:
-    ```bash
-    python resize_with_aspect_ratio.py input.jpg output.jpg --width 800
+### `resize_image.py`
+- Resizes images to exact dimensions specified by the user
+- Uses Pillow's `Image.resize()` method with `LANCZOS` resampling algorithm
+- May alter the aspect ratio if target dimensions don't match the original ratio
 
-Resize based on height:
-    ```bash
-    python resize_with_aspect_ratio.py input.jpg output.jpg --height 600
+### `resize_with_aspect_ratio.py`
+- Intelligently preserves the original aspect ratio of the image
+- Calculates the missing dimension based on the provided one
+- Ensures images look natural without stretching or distortion
 
-## How It Works
+## 📋 Command-Line Arguments
 
-resize_image.py
-* Uses Pillow's Image.resize() method with LANCZOS resampling for high-quality output.
-* Accepts exact width and height as arguments.
+### For `resize_image.py`:
 
-resize_with_aspect_ratio.py
-* Automatically calculates missing dimensions to preserve the original aspect ratio.
-* Flexible: Specify either width or height (or both for exact resizing).
+| Argument | Description |
+|----------|-------------|
+| `input_path` | Path to the source image |
+| `output_path` | Path where the resized image will be saved |
+| `width` | Target width in pixels (integer) |
+| `height` | Target height in pixels (integer) |
 
-Command-Line Arguments
-For resize_image.py:
-Argument	Description
-input_path	Path to the input image
-output_path	Path to save the resized image
-width	Target width in pixels (integer)
-height	Target height in pixels (integer)
-For resize_with_aspect_ratio.py:
-Argument	Description
-input_path	Path to the input image
-output_path	Path to save the resized image
---width	Target width (optional)
---height	Target height (optional)
+### For `resize_with_aspect_ratio.py`:
 
-## Example Output:
+| Argument | Description |
+|----------|-------------|
+| `input_path` | Path to the source image |
+| `output_path` | Path where the resized image will be saved |
+| `--width` | Target width in pixels (optional) |
+| `--height` | Target height in pixels (optional) |
 
-Original Image(1920x1080)
-Resized to 800x600
-Resized with Aspect Ratio(width=800)
+## 📊 Example Results
 
-Contributing
-Fork the repository.
-Create a feature branch (git checkout -b feature/your-feature).
-Commit changes (git commit -m 'Add some feature').
-Push to the branch (git push origin feature/your-feature).
-Open a Pull Request.
+| Image | Dimensions | Description |
+|-------|------------|-------------|
+| Original | 1920×1080 | Source image |
+| Exact Resize | 800×600 | Fixed dimensions (may alter aspect ratio) |
+| Aspect Ratio Preserved | 800×450 | Width set to 800, height calculated automatically |
 
-License
-This project is licensed under the MIT License. See LICENSE for details.
+## 👨‍💻 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📜 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🔗 Links
+
+- GitHub Repository: [https://github.com/ahnaf-hossain2/Image-Resizer-Tool](https://github.com/ahnaf-hossain2/Image-Resizer-Tool)
+- Report Issues: [https://github.com/ahnaf-hossain2/Image-Resizer-Tool/issues](https://github.com/ahnaf-hossain2/Image-Resizer-Tool/issues)
